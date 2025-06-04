@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# nevsluh
 
-## Getting Started
+> Пространство, где можно сказать то, что не скажешь вслух
 
-First, run the development server:
+## О проекте
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Nevsluh — это платформа для анонимного самовыражения, которая сочетает в себе онлайн-сервис и физические инсталляции. Проект позволяет людям анонимно делиться своими мыслями, мечтами, страхами и признаниями, которые они не могут или не хотят произносить вслух.
+
+### Основные функции
+
+- **Анонимные сообщения**: Поделитесь тем, что у вас на душе, без раскрытия личности.
+- **Чтение сообщений других**: Узнайте, о чем думают и мечтают другие люди.
+- **Письмо себе в будущее**: Отправьте сообщение, которое получите в выбранную дату.
+- **AI-поддержка**: Получите эмпатичный ответ на ваше сообщение.
+- **QR-коды для физических локаций**: Разместите QR-код в реальном мире для создания точки анонимного самовыражения.
+
+## Технический стек
+
+- **Frontend**: Next.js, React, TypeScript, TailwindCSS
+- **Backend**: Firebase (Firestore, Authentication, Storage)
+- **AI**: Gemini API (для генерации эмпатичных ответов)
+- **Анимации**: Framer Motion
+
+## Начало работы
+
+### Предварительные требования
+
+- Node.js (версия 18 или выше)
+- npm или yarn
+- Firebase аккаунт
+
+### Установка
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/yourusername/nevsluh.git
+   cd nevsluh
+   ```
+
+2. Установите зависимости:
+   ```bash
+   npm install
+   # или
+   yarn install
+   ```
+
+3. Создайте файл `.env.local` на основе `.env.local.example` и заполните его вашими Firebase и Gemini API ключами.
+
+4. Запустите проект в режиме разработки:
+   ```bash
+   npm run dev
+   # или
+   yarn dev
+   ```
+
+5. Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере.
+
+## Структура проекта
+
+```
+nevsluh/
+├── src/
+│   ├── app/               # Next.js App Router
+│   ├── components/        # React компоненты
+│   ├── lib/               # Утилиты и API
+│   └── types/             # TypeScript типы
+├── public/                # Статические файлы
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Firebase настройка
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Создайте новый проект в [Firebase Console](https://console.firebase.google.com/).
+2. Добавьте веб-приложение в ваш проект.
+3. Включите Firestore, Authentication и Storage.
+4. Скопируйте ключи конфигурации в ваш файл `.env.local`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Развертывание
 
-## Learn More
+Проект можно легко развернуть на Vercel:
 
-To learn more about Next.js, take a look at the following resources:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/nevsluh)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Лицензия
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Этот проект лицензирован под [MIT License](LICENSE).
 
-## Deploy on Vercel
+## Контакты
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Email: contact@nevsluh.app
+- Website: [nevsluh.app](https://nevsluh.app)

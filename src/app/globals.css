@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 250, 250, 252;
+  --background-end-rgb: 245, 245, 250;
+  --primary-pink: #E83E8C;
+  --accent-pink: #D81B60;
+  --light-pink: #F8EBF2;
+  --dark-pink: #9C2760;
+  --tab-active: #E83E8C;
+  --tab-inactive: #F1E5EB;
+  --tab-hover: #E8D0DE;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.05);
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-tertiary: #6B7280;
 }
 
 @theme inline {
@@ -12,15 +25,412 @@
   --font-mono: var(--font-geist-mono);
 }
 
+.light-theme {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 250, 250, 252;
+  --background-end-rgb: 245, 245, 250;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.05);
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-tertiary: #6B7280;
+}
+
+.dark-theme {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 20, 20, 25;
+  --background-end-rgb: 30, 30, 35;
+  --card-bg: #1F1C1F;
+  --card-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #F9FAFB;
+  --text-secondary: #E5E7EB;
+  --text-tertiary: #9CA3AF;
+  --tab-inactive: #302530;
+  --tab-hover: #3D2D36;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 20, 20, 25;
+    --background-end-rgb: 30, 30, 35;
+    --card-bg: #1F1C1F;
+    --card-border: rgba(255, 255, 255, 0.05);
+    --text-primary: #F9FAFB;
+    --text-secondary: #E5E7EB;
+    --text-tertiary: #9CA3AF;
+    --tab-inactive: #302530;
+    --tab-hover: #3D2D36;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Улучшение контраста текста - значительно усиленный контраст */
+.text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-400 {
+  color: var(--text-secondary) !important;
+}
+
+.text-gray-500 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-300 {
+  color: var(--text-secondary) !important;
+}
+
+/* Улучшение контраста для градиентных текстов */
+.bg-clip-text.text-transparent {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  -webkit-text-stroke: 0.3px rgba(0,0,0,0.2);
+}
+
+.dark .bg-clip-text.text-transparent {
+  text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+  -webkit-text-stroke: 0.3px rgba(255,255,255,0.2);
+}
+
+/* Креативные элементы для современного лендинга */
+.gradient-border {
+  position: relative;
+  border-radius: 0.75rem;
+  z-index: 0;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.85rem;
+  background: linear-gradient(45deg, var(--primary-pink), var(--accent-pink), #C2185B, #AD1457);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradient-animation 8s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Анимированные карточки */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Креативные кнопки */
+.creative-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.creative-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.creative-button:hover::before {
+  left: 100%;
+}
+
+/* Текстовые эффекты */
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary-pink), var(--accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.dark .text-shadow {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Эффект стекла */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Улучшенные стили для вкладок/навигации */
+.nav-link {
+  position: relative;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: var(--tab-inactive);
+  border: 2px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: var(--tab-hover);
+}
+
+.nav-link.active {
+  background-color: var(--tab-active);
+  color: white;
+  box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
+}
+
+/* Розовые фоны и карточки - более сдержанные */
+.bg-pink-gradient {
+  background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+}
+
+.bg-pink-light {
+  background-color: var(--light-pink);
+}
+
+.dark .bg-pink-light {
+  background-color: #302530;
+}
+
+.card-pink {
+  background-color: #F8F0F4;
+  border-left: 4px solid var(--primary-pink);
+}
+
+.dark .card-pink {
+  background-color: #2A2228;
+  border-left: 4px solid var(--primary-pink);
+}
+
+/* Заменяем белые фоны на более нейтральные */
+.bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+.bg-gray-50 {
+  background-color: #F5F2F5 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1A181A !important;
+}
+
+/* Акцентные границы */
+.border-accent {
+  border-color: var(--primary-pink);
+}
+
+/* Тема переключатель */
+.theme-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #E8D0DE;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark .theme-switch {
+  background-color: #3D2D36;
+}
+
+.theme-switch::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark .theme-switch::after {
+  transform: translateX(30px);
+  background-color: #E83E8C;
+}
+
+/* WOW эффекты */
+.reveal-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-pink);
+  animation: reveal-text 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal-text {
+  0% { width: 100%; }
+  100% { width: 0; }
+}
+
+/* Плавающий эффект */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 3D эффект для карточек */
+.card-3d {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* Пульсирующий эффект */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+  
+  .creative-button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .gradient-border::before {
+    inset: -1px;
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+/* Эффект подсветки при скролле */
+.highlight-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.highlight-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Эффект размытия для фона */
+.blur-in {
+  filter: blur(10px);
+  opacity: 0;
+  animation: blur-in 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes blur-in {
+  0% { filter: blur(10px); opacity: 0; }
+  100% { filter: blur(0); opacity: 1; }
+}
+
+/* Эффект свечения */
+.glow {
+  box-shadow: 0 0 5px rgba(232, 62, 140, 0.2);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(232, 62, 140, 0.2); }
+  to { box-shadow: 0 0 20px rgba(232, 62, 140, 0.6); }
+}
+
+/* Эффект печатающегося текста */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--primary-pink);
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary-pink) }
 }
